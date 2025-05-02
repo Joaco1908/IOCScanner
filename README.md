@@ -4,7 +4,7 @@
 
 - `ioc_generator.py` → Validate and store IoCs in a JSON file  
 - `ioc_scanner.py` → Analyze a directory for suspicious files based on IoCs  
-- `check_ip_reputation.py` → Query IPs against AbuseIPDB to check for malicious behavior
+- `ip_checker.py` → Query IPs against AbuseIPDB to check for malicious behavior
 
 ---
 
