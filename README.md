@@ -24,7 +24,7 @@
 ## ⚙️ Requirements
 
 - Python 3.8+
-- [`requests`](https://pypi.org/project/requests/) (for IP reputation checks)
+- [`AbuseIPDB`](https://www.abuseipdb.com/) (for IP reputation checks)
 
 Install dependencies:
 
