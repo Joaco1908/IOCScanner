@@ -35,7 +35,6 @@ def main():
         # Open file to append
         with open(open_path, "r") as f:
             ioc_data = json.load(f)
-            print(ioc_data)
     else:
         # Basic model of the IOC json data 
         ioc_data = {
@@ -48,11 +47,9 @@ def main():
     path = "iocGeneratedFiles/" + filename
 
     # Verify if the file doesn't already exists
-    if os.path.exists(path):
+    if (os.path.exists(path) and not args.append) or (os.path.exists(path) and args.append and args.output):
         print(f"\n[red] [!] Error: File '{path}' already exists.[/]")
         sys.exit(1)
-
-    print(ioc_data)
 
     # --- The user adds the information 
     # Valid choices for the input
@@ -75,10 +72,15 @@ def main():
             answer_choice = int(input("What do you want to do?: "))
         add(answer_choice, ioc_data)
 
-    with open(path, "w") as f:
-        json.dump(ioc_data, f, indent=4)
+    if args.append and not args.output:
+        with open(open_path, "w") as f:
+            json.dump(ioc_data, f, indent=4)
+            print("[green]\n[+] File modified: " + open_path +".[/]")
+    else:
+        with open(path, "w") as f:
+            json.dump(ioc_data, f, indent=4)
+            print("[green]\n[+] File created: " + path +".[/]")
 
-    print("[green]\n[+] File created: " + path +".[/]")
 
 # to add json information to ioc_data
 def add(answer_choice, ioc_data):
