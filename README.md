@@ -29,3 +29,8 @@ Install dependencies:
 ```bash 
 pip install requests rich os sys 
 ```
+
+## Example
+
+This test is made in my WSL linux machine. 
+We created a test directory with another 5 directories that contains both safe and malicious file. We also made a test.json file for this test.
