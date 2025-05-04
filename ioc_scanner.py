@@ -48,11 +48,11 @@ for path in target_directory.rglob("*"):
                 sha256 = hashlib.sha256(content).hexdigest()
 
                 checks = {
-                    "md5": ("hashes", md5),
-                    "sha1": ("hashes", sha1),
-                    "sha256": ("hashes", sha256),
-                    "filename": ("filenames", filename),
-                    "file size": ("file sizes", filesize),
+                    "MD5": ("hashes", md5),
+                    "SHA1": ("hashes", sha1),
+                    "SHA256": ("hashes", sha256),
+                    "Filename": ("filenames", filename),
+                    "File size": ("file sizes", filesize),
                 }
 
                 matched = False
