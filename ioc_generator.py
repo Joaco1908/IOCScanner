@@ -30,7 +30,7 @@ def main():
         open_file = args.append
         open_path = "iocGeneratedFiles/" + open_file 
         if (not os.path.exists(open_path)):
-            print(f"\n[red] [!] Error: File '{open_path}' does not exists.[/]")
+            print(f"\n[red] [!] Error: File '{open_path}' does not exist.[/]")
             sys.exit(1)
         # Open file to append
         with open(open_path, "r") as f:
@@ -48,7 +48,7 @@ def main():
 
     # Verify if the file doesn't already exists
     if (os.path.exists(path) and not args.append) or (os.path.exists(path) and args.append and args.output):
-        print(f"\n[red] [!] Error: File '{path}' already exists.[/]")
+        print(f"\n[red] [!] Error: File '{path}' already exist.[/]")
         sys.exit(1)
 
     # --- The user adds the information 

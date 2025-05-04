@@ -2,6 +2,9 @@ import argparse
 from pathlib import Path
 import hashlib 
 import json
+from rich import print
+import os
+import sys
 
 # Argument parser
 
@@ -14,8 +17,14 @@ target_directory = Path(args.path)
 ioc_file_path = args.iocs
 
 # Load IoCs
+if (not os.path.exists(ioc_file_path)):
+    print(f"\n[red][!] Error: File '{ioc_file_path}' does not exist.[/]")
+    sys.exit(1)
+
 with open(ioc_file_path, "r") as f:
     iocs = json.load(f)
+
+print(f"\n[green][+] File '{ioc_file_path}' found.[/]")
 
 # Scanning
 for path in target_directory.rglob("*"):
@@ -25,7 +34,7 @@ for path in target_directory.rglob("*"):
         try:
             with open(path, "rb") as f: # "rb" = read binary, para leer ejecutables, imagenes, etc
                 content = f.read() # Content ahora es un bytes object que se puede usar para calcular hashes
-                
+ 
                 md5 = hashlib.md5(content).hexdigest()
                 sha1 = hashlib.sha1(content).hexdigest()
                 sha256 = hashlib.sha256(content).hexdigest()
@@ -39,8 +48,8 @@ for path in target_directory.rglob("*"):
 
                     (filesize in iocs["file sizes"])
                 ):
-                    print(f"[!] file matched! {path}")
+                    print(f"\n[red][!] File matched! {path}[/]")
         except Exception as e:
-            print(f"Error reading file {path}: {e}")
+            print(f"\n[red]Error reading file {path}: {e}[/]")
         
 
