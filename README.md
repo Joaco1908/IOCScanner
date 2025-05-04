@@ -1,6 +1,6 @@
-# IOCScanner 🛡️
+# ThreatKit 🛡️
 
-**IOCScanner** is a Python-based tool designed to help Blue Team analysts detect malicious files and investigate Indicators of Compromise (IoCs) on local systems. The project is divided into three independent modules:
+**ThreatKit** is a Python-based tool designed to help Blue Team analysts detect malicious files and investigate Indicators of Compromise (IoCs) on local systems. The project is divided into three independent modules:
 
 - `ioc_generator.py` → Validate and store IoCs in a JSON file  
 - `ioc_scanner.py` → Analyze a directory for suspicious files based on IoCs  
