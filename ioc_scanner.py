@@ -41,7 +41,7 @@ for path in target_directory.rglob("*"):
         filesize = path.stat().st_size
         try:
             with open(path, "rb") as f:
-                content = f.read()
+                content = f.read().replace(b'\r\n', b'\n')
  
                 md5 = hashlib.md5(content).hexdigest()
                 sha1 = hashlib.sha1(content).hexdigest()
@@ -67,4 +67,4 @@ for path in target_directory.rglob("*"):
         except Exception as e:
             print(f"\n[red]Error reading file {path}: {e}[/]")
         
-
+print("\n[green]Scanning finished successfully.[/]")
