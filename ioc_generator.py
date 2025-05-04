@@ -60,7 +60,7 @@ def main():
 
     while answer_choice not in valid_choices:
         print("Invalid choice. Please enter 1, 2, 3, or 4.")
-        level = int(input("What do you want to do?: "))
+        answer_choise = int(input("What do you want to do?: "))
     
     add(answer_choice, ioc_data)
 
