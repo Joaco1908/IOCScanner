@@ -67,4 +67,4 @@ for path in target_directory.rglob("*"):
         except Exception as e:
             print(f"\n[red]Error reading file {path}: {e}[/]")
         
-print("\n[green]Scanning finished successfully.[/]")
+print("\n[green][+] Scanning finished successfully.[/]")
