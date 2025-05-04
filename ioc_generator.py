@@ -76,7 +76,11 @@ def main():
         with open(open_path, "w") as f:
             json.dump(ioc_data, f, indent=4)
             print("[green]\n[+] File modified: " + open_path +".[/]")
+
     else:
+        # Crear carpeta si no existe
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+
         with open(path, "w") as f:
             json.dump(ioc_data, f, indent=4)
             print("[green]\n[+] File created: " + path +".[/]")
