@@ -32,6 +32,8 @@ if (not os.path.exists(target_directory)):
 
 print(f"\n[green][+] Directory '{target_directory}' found. Starting scan. [/]")
 
+iocs["file sizes"] = [int(size) for size in iocs.get("file sizes", [])]
+
 # Scanning
 for path in target_directory.rglob("*"):
     if path.is_file():
@@ -57,9 +59,9 @@ for path in target_directory.rglob("*"):
                 for label, (ioc_key, value) in checks.items():
                     if value in iocs.get(ioc_key, []):
                         if not matched:
-                            print(f"\n[red][-] Suspicious file found: {path}[/]")
+                            print(f"\n[red][!] Suspicious file found: {path}[/]")
                             matched = True
-                        print(f"\n[red][{label} matched: {value}")
+                        print(f"[red]{label} matched: {value}")
 
         
         except Exception as e:
