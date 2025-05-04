@@ -1,0 +1,17 @@
+{
+    "filenames": [
+        "maliciousFile2.txt",
+        "maliciousFile3.txt",
+        "maliciousFile.txt"
+    ],
+    "file sizes": [
+        "35",
+        "34",
+        "26"
+    ],
+    "hashes": [
+        "ad756af3af5530477eee7daf6f9d2f25",
+        "a6844d33d122e5c2b7b71f636eb2e3a8",
+        "02346f950a2ec3a996178f0042c27b14"
+    ]
+}
