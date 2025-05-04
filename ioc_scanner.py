@@ -38,23 +38,30 @@ for path in target_directory.rglob("*"):
         filename = path.name
         filesize = path.stat().st_size
         try:
-            with open(path, "rb") as f: # "rb" = read binary, para leer ejecutables, imagenes, etc
-                content = f.read() # Content ahora es un bytes object que se puede usar para calcular hashes
+            with open(path, "rb") as f:
+                content = f.read()
  
                 md5 = hashlib.md5(content).hexdigest()
                 sha1 = hashlib.sha1(content).hexdigest()
                 sha256 = hashlib.sha256(content).hexdigest()
 
-                if (
-                    (md5 in iocs["hashes"]) or 
-                    (sha1 in iocs["hashes"]) or 
-                    (sha256 in iocs["hashes"]) or
+                checks = {
+                    "md5": ("hashes", md5),
+                    "sha1": ("hashes", sha1),
+                    "sha256": ("hashes", sha256),
+                    "filename": ("filenames", filename),
+                    "file size": ("file sizes", filesize),
+                }
 
-                    (filename in iocs["filenames"]) or
+                matched = False
+                for label, (ioc_key, value) in checks.items():
+                    if value in iocs.get(ioc_key, []):
+                        if not matched:
+                            print(f"\n[red][-] Suspicious file found: {path}[/]")
+                            matched = True
+                        print(f"\n[red][{label} matched: {value}")
 
-                    (filesize in iocs["file sizes"])
-                ):
-                    print(f"\n[red][!] File matched! {path}[/]")
+        
         except Exception as e:
             print(f"\n[red]Error reading file {path}: {e}[/]")
         
