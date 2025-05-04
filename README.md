@@ -15,9 +15,7 @@
   - Emails (validated with regex)
   - File hashes (MD5, SHA1, SHA256)
   - Suspicious file names
-- Customizable and portable: no dependencies on commercial tools
 - Works entirely offline (except for IP reputation check)
-- Generates structured JSON reports
 
 ---
 
@@ -28,5 +26,11 @@
 
 Install dependencies:
 
-```bash
-pip install -r requirements.txt
+```bash 
+pip install requests rich os sys 
+```
+
+## Example
+
+This test is made in my WSL linux machine. 
+We created a test directory with another 5 directories that contains both safe and malicious file. We also made a test.json file for this test.
