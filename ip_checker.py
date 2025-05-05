@@ -16,7 +16,7 @@ def main():
             print(f"\n[red][!] Error: File '{args.textfile}' does not exist.[/]")
             sys.exit(1)
         if (not args.textfile.lower().endswith(".txt")):
-                print("\n[red][!] Error: Output file must have a .txt extension.[/]")
+                print("\n[red][!] Error: The textfile must have a .txt extension.[/]")
                 sys.exit(1)
     else:
         # If there is no text file (gather IPs from console)
