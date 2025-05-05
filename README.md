@@ -11,10 +11,10 @@
 ## 🔍 Features
 
 - Support for the following IoC types:
-  - IP addresses (validated with `ipaddress`)
-  - Emails (validated with regex)
+  - IP addresses (validated with `ip_checker.py`)
   - File hashes (MD5, SHA1, SHA256)
   - Suspicious file names
+  - File size value
 - Works entirely offline (except for IP reputation check)
 
 ---
@@ -26,18 +26,20 @@ ThreatKit is divided into three modules. You can run each one independently depe
 🧩 1. Generate IoCs – ioc_generator.py
 Use this module to create or validate IoC entries and store them in a JSON file. <br>
 Flags:
-- --output (-o): Specifies the name of the output JSON file where the IoCs will be saved. In this example, the IoCs will be saved in test.json.
-- --append (-a): Adds the new IoCs to the existing JSON file instead of overwriting it.
+- `--output` (`-o`): Specifies the name of the output JSON file where the IoCs will be saved. In this example, the IoCs will be saved in test.json.
+- `--append` (`-a`): Adds the new IoCs to the existing JSON file instead of overwriting it.
 
 🔎 2. Scan Files – ioc_scanner.py
 Use this module to scan a directory for files that match any of the IoCs defined in a JSON file. <br>
 Flags:
-- --path (-p): Specifies the path to the directory you want to scan. For example, test is the directory where the files to be checked are located.
+- `--path` (`-p`): Specifies the path to the directory you want to scan. For example, test is the directory where the files to be checked are located.
 
-- --ioc_file (-i): Specifies the path to the IoC JSON file you want to use for the scan. In this case, test.json contains the IoCs that will be checked against the files in the specified directory.
+- `--ioc_file` (`-i`): Specifies the path to the IoC JSON file you want to use for the scan. In this case, test.json contains the IoCs that will be checked against the files in the specified directory.
 
 🌐 3. Check IP Reputation – ip_checker.py
 Use this module to check IP addresses against AbuseIPDB for reputation scoring.
+Flag:
+- `--textfile` (`-t`): Specifies a .txt file containing a list of IP addresses. The script will read each IP from the file and check its reputation using the configured threat intelligence API.
 
 ---
 ## ✅ Example
