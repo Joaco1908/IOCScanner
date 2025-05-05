@@ -41,6 +41,13 @@ Use this module to check IP addresses against AbuseIPDB for reputation scoring.
 Flag:
 - `--textfile` (`-t`): Specifies a .txt file containing a list of IP addresses. The script will read each IP from the file and check its reputation using the configured threat intelligence API.
 
+How to integrate API key: <br> <br>
+Create an account at https://abuseipdb.com and generate your API key. <br>
+Set the API key as an environment variable in your terminal:  <br> <br>
+Windows (Command Prompt or PowerShell): `set ABUSEIPDB_API_KEY=YOUR_KEY` <br> <br>
+Linux/macOS (Bash/Zsh): `export ABUSEIPDB_API_KEY=YOUR_KEY` <br> <br>
+Replace YOUR_KEY with the actual key you obtained from AbuseIPDB.
+
 ---
 ## ✅ Example
 
@@ -55,6 +62,17 @@ A look at the contents of testa.json. <br>
 Demonstrating how ioc_scanner.py analyzes the test directory using test.json, which contains IoCs, against a set of existing safe and malicious files. <br>
 <img src="https://github.com/user-attachments/assets/02d67b95-e9b9-45eb-aba7-86f8d69ca64c" width="600"/>
 
+🛡️ IP_Checker Example <br>
+Using it from the console: <br>
+Provide a single IP directly via interactive input: <br>
+<img src="https://github.com/user-attachments/assets/ab33a88b-a95b-4fe9-93e5-fade1b3db506" width="600"/>
+
+Using it with a text file: <br>
+Create a file (like text.txt) containing one IP per line: <br>
+<img src="https://github.com/user-attachments/assets/66e36e31-1baa-461c-966f-8c8d559aa4b9" width="600"/> <br>
+Run the script and pass the file as an argument. <br>
+Result output: <br>
+<img src="https://github.com/user-attachments/assets/0c031a77-aebc-4544-91b7-24c3f6d514b2" width="600"/>
 
 ---
 
