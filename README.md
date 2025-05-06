@@ -68,6 +68,9 @@ set ABUSEIPDB_API_KEY=YOUR_KEY
 
 # Linux/macOS
 export ABUSEIPDB_API_KEY=YOUR_KEY
+```
+
+---
 
 ### ✉️ 4. Email Validity & Reputation Checker – `email_checker.py`
 
