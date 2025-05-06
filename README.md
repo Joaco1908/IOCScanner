@@ -5,6 +5,7 @@
 - `ioc_generator.py` → Validate and store IoCs in a JSON file  
 - `ioc_scanner.py` → Analyze a directory for suspicious files based on IoCs  
 - `ip_checker.py` → Query IPs against AbuseIPDB to check for malicious behavior
+- `email_checker.py` →  Validate email format, check domain existence, and analyze email reputation using IPQualityScore
 
 ---
 
