@@ -6,7 +6,7 @@ import requests
 import json
 
 # Load API Key
-API_KEY = os.getenv("ABUSEIPDB_API_KEY")
+API_KEY = os.getenv("56196dcb827275848d97dd1c6c0dcabff3b99257ee0bcfb3a65f5abbba2f9ade64f3c3fd71b77f25")
 
 def check_ip(ip):
     url = "https://api.abuseipdb.com/api/v2/check"
