@@ -16,7 +16,7 @@
   - File hashes (MD5, SHA1, SHA256)
   - Suspicious file names
   - File size value
-- Works entirely offline (except for IP reputation check)
+- Works entirely offline (except for IP/email reputation check email dns resolver)
 
 ---
 
