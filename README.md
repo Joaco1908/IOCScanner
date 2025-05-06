@@ -84,8 +84,6 @@ This script validates email addresses by combining syntax checks, DNS lookups, a
 
 ---
 
-#### 🛠️ How to Use
-
 **Option 1 – From a file:**
 
 ```bash
