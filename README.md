@@ -1,11 +1,11 @@
 # ThreatKit 🛡️
 
-**ThreatKit** is a Python-based tool designed to help Blue Team analysts detect malicious files and investigate Indicators of Compromise (IoCs) on local systems. The project is divided into three independent modules:
+**ThreatKit** is a Python-based tool designed to help Blue Team analysts detect malicious files and investigate Indicators of Compromise (IoCs) on local systems. The project is divided into four independent modules:
 
 - `ioc_generator.py` → Validate and store IoCs in a JSON file  
 - `ioc_scanner.py` → Analyze a directory for suspicious files based on IoCs  
-- `ip_checker.py` → Query IPs against AbuseIPDB to check for malicious behavior
-- `email_checker.py` →  Validate email format, check domain existence, and analyze email reputation using IPQualityScore
+- `ip_checker.py` → Query IPs against AbuseIPDB to check for malicious behavior  
+- `email_checker.py` → Validate email format, check domain existence, and analyze email reputation using IPQualityScore
 
 ---
 
@@ -16,40 +16,102 @@
   - File hashes (MD5, SHA1, SHA256)
   - Suspicious file names
   - File size value
-- only `ioc_scanner.py` is fully offline; IP/email reputation checks require internet access
+- Offline support (only `ioc_scanner.py` is fully offline; IP/email reputation checks require internet access)
 
 ---
 
-## 🚀 How to Use
+## 🚀 How to Use 
 
 ThreatKit is divided into four modules. You can run each one independently depending on your task.
 
-🧩 1. Generate IoCs – ioc_generator.py
-Use this module to create or validate IoC entries and store them in a JSON file. <br>
-Flags:
-- `--output` (`-o`): Specifies the name of the output JSON file where the IoCs will be saved. In this example, the IoCs will be saved in test.json.
+---
+
+### 🧩 1. Generate IoCs – `ioc_generator.py`
+
+Use this module to create or validate IoC entries and store them in a JSON file.
+
+**Flags:**
+
+- `--output` (`-o`): Name of the output JSON file where the IoCs will be saved.  
 - `--append` (`-a`): Adds the new IoCs to the existing JSON file instead of overwriting it.
 
-🔎 2. Scan Files – ioc_scanner.py
-Use this module to scan a directory for files that match any of the IoCs defined in a JSON file. <br>
-Flags:
-- `--path` (`-p`): Specifies the path to the directory you want to scan. For example, test is the directory where the files to be checked are located.
+---
 
-- `--ioc_file` (`-i`): Specifies the path to the IoC JSON file you want to use for the scan. In this case, test.json contains the IoCs that will be checked against the files in the specified directory.
+### 🔎 2. Scan Files – `ioc_scanner.py`
 
-🌐 3. Check IP Reputation – ip_checker.py
-Use this module to check IP addresses against AbuseIPDB for reputation scoring.
-Flag:
-- `--textfile` (`-t`): Specifies a .txt file containing a list of IP addresses. The script will read each IP from the file and check its reputation using the configured threat intelligence API.
+Use this module to scan a directory for files that match any of the IoCs defined in a JSON file.
 
-How to integrate API key: <br> <br>
-Create an account at https://abuseipdb.com and generate your API key. <br>
-Set the API key as an environment variable in your terminal:  <br> <br>
-Windows (Command Prompt or PowerShell): `set ABUSEIPDB_API_KEY=YOUR_KEY` <br> <br>
-Linux/macOS (Bash/Zsh): `export ABUSEIPDB_API_KEY=YOUR_KEY` <br> <br>
-Replace YOUR_KEY with the actual key you obtained from AbuseIPDB.
+**Flags:**
+
+- `--path` (`-p`): Directory to scan.  
+- `--ioc_file` (`-i`): Path to the IoC JSON file.
 
 ---
+
+### 🌐 3. Check IP Reputation – `ip_checker.py`
+
+Use this module to check IP addresses against AbuseIPDB for threat intelligence.
+
+**Flag:**
+
+- `--textfile` (`-t`): A `.txt` file with one IP per line.
+
+**API Setup:**
+
+1. Create an account at [https://abuseipdb.com](https://abuseipdb.com)  
+2. Get your API key  
+3. Set it as an environment variable:
+
+```bash
+# Windows
+set ABUSEIPDB_API_KEY=YOUR_KEY
+
+# Linux/macOS
+export ABUSEIPDB_API_KEY=YOUR_KEY
+
+### ✉️ 4. Email Validity & Reputation Checker – `email_checker.py`
+
+This script validates email addresses by combining syntax checks, DNS lookups, and reputation analysis via IPQualityScore.
+
+**🔍 Validation steps:**
+
+- ✅ **Format check** using regular expressions
+- ✅ **Domain verification** via DNS MX records
+- 🌐 **Reputation check** using [IPQualityScore Email Validation API](https://www.ipqualityscore.com/email-validation)
+
+---
+
+#### 🛠️ How to Use
+
+**Option 1 – From a file:**
+
+```bash
+python email_checker.py --textfile emails.txt
+```
+
+`emails.txt` should be a plain text file with one email address per line.
+
+**Option 2 – Manual input:**
+
+```bash
+python email_checker.py
+```
+
+The script will prompt you to enter an email address via console.
+
+**🔐 API Setup (IPQualityScore):**
+
+1. Sign up for a free account at [ipqualityscore.com](https://www.ipqualityscore.com)
+2. Copy your API key from the dashboard
+3. Set it as an environment variable:
+
+```bash
+# On Windows
+set IPQS_API_KEY=your_key
+
+# On Linux/macOS
+export IPQS_API_KEY=your_key
+```
 ## ✅ Example
 
 This test was conducted on my WSL Linux machine. We created a test directory containing five subdirectories, each with a mix of safe and malicious files. A test.json file was also created for use in this test.
