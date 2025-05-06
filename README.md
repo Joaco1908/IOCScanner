@@ -80,7 +80,7 @@ This script validates email addresses by combining syntax checks, DNS lookups, a
 
 - ✅ **Format check** using regular expressions
 - ✅ **Domain verification** via DNS MX records
-- 🌐 **Reputation check** using [IPQualityScore Email Validation API](https://www.ipqualityscore.com/email-validation)
+- 🌐 **Reputation check** using [IPQualityScore Email Validation API](https://www.ipqualityscore.com/)
 
 ---
 
