@@ -16,13 +16,13 @@
   - File hashes (MD5, SHA1, SHA256)
   - Suspicious file names
   - File size value
-- Works entirely offline (except for IP/email reputation check email dns resolver)
+- only `ioc_scanner.py` is fully offline; IP/email reputation checks require internet access
 
 ---
 
 ## 🚀 How to Use
 
-ThreatKit is divided into three modules. You can run each one independently depending on your task.
+ThreatKit is divided into four modules. You can run each one independently depending on your task.
 
 🧩 1. Generate IoCs – ioc_generator.py
 Use this module to create or validate IoC entries and store them in a JSON file. <br>
